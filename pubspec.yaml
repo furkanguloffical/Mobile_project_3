@@ -7,8 +7,15 @@ environment:
   sdk: '>=3.2.6 <4.0.0'
 
 dependencies:
+  animate_do: ^3.3.4
+  cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
+  flutter_secure_storage: ^9.2.2
+  flutter_svg: ^2.0.10+1
+  go_router: ^14.1.4
+  shared_preferences: ^2.2.3
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:
