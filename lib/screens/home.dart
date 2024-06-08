@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   context, "Settings", '/settings', Icon(Icons.settings)),
               InkwellMenu(context, "Contact ", '/contact', Icon(Icons.call)),
               InkwellMenu(context, "About Us", '/about', Icon(Icons.person)),
-              InkwellMenu(context, "Logout", '/', Icon(Icons.logout)),
+              InkwellMenu(context, "Logout", '/login', Icon(Icons.logout)),
             ],
           ),
         ),

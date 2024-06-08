@@ -83,34 +83,36 @@ class _settingsScreenState extends State<settingsScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Gap(20),
-            Product(),
-            Gap(20),
-            ElevatedButton(
-              onPressed: () {
-                clientCubit.changeDarkMode(darkMode: true);
-              },
-              child: Text('DarkMode'),
-            ),
-            Gap(20),
-            ElevatedButton(
-              onPressed: () {
-                clientCubit.changeDarkMode(darkMode: false);
-              },
-              child: Text('LightMode'),
-            ),
-            Gap(20),
-            ElevatedButton(
-              onPressed: () {
-                clientCubit.changeLanguage(language: 'en');
-              },
-              child: Text('Language'),
-            ),
-            Gap(20),
-          ],
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Gap(20),
+              Product(),
+              Gap(20),
+              ElevatedButton(
+                onPressed: () {
+                  clientCubit.changeDarkMode(darkMode: true);
+                },
+                child: Text('DarkMode'),
+              ),
+              Gap(20),
+              ElevatedButton(
+                onPressed: () {
+                  clientCubit.changeDarkMode(darkMode: false);
+                },
+                child: Text('LightMode'),
+              ),
+              Gap(20),
+              ElevatedButton(
+                onPressed: () {
+                  clientCubit.changeLanguage(language: 'en');
+                },
+                child: Text('Language'),
+              ),
+              Gap(20),
+            ],
+          ),
         ),
       ),
     );

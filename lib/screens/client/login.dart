@@ -29,14 +29,14 @@ class _LoginScreenState extends State<LoginScreen> {
               Text(
                 'Email',
                 style: TextStyle(
-                    fontSize: 30, color: const Color.fromARGB(255, 0, 0, 0)),
+                    fontSize: 30, color: Color.fromARGB(255, 255, 255, 255)),
               ),
               SizedBox(height: 5),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.6),
+                  color: Colors.white.withOpacity(0.9),
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: TextField(
@@ -47,14 +47,14 @@ class _LoginScreenState extends State<LoginScreen> {
               Text(
                 'Password',
                 style: TextStyle(
-                    fontSize: 30, color: const Color.fromARGB(255, 0, 0, 0)),
+                    fontSize: 30, color: Color.fromARGB(255, 255, 255, 255)),
               ),
               SizedBox(height: 5),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 margin: EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.6),
+                  color: Colors.white.withOpacity(0.9),
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: TextField(
@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ElevatedButton(
                       onPressed: () => GoRouter.of(context).go("/home"),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white.withOpacity(0.1),
+                        backgroundColor: Colors.white.withOpacity(0.9),
                         shadowColor: Colors.white,
                         side: BorderSide(
                             color: Color.fromARGB(255, 211, 211, 211),
@@ -80,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ElevatedButton(
                       onPressed: () => GoRouter.of(context).go("/register"),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white.withOpacity(0.1),
+                        backgroundColor: Colors.white.withOpacity(0.9),
                         shadowColor: Colors.white,
                         side: BorderSide(
                             color: Color.fromARGB(255, 211, 211, 211),

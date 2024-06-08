@@ -64,7 +64,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       margin: EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.6),
+        color: Colors.white.withOpacity(0.9),
         borderRadius: BorderRadius.circular(25),
       ),
       child: TextField(

@@ -148,46 +148,7 @@ class Product extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: const Column(
-        children: [Text(
-              'Our Rates and Services',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20),
-            Text(
-              'At Shipping Company, we offer competitive rates and a wide range of services to meet your shipping needs. Whether you're shipping domestically or internationally, we have options for you.',
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: 20),
-            Text(
-              'Our Services Include:',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            Text(
-              '- Domestic Shipping',
-              style: TextStyle(fontSize: 16),
-            ),
-            Text(
-              '- International Shipping',
-              style: TextStyle(fontSize: 16),
-            ),
-            Text(
-              '- Express Delivery',
-              style: TextStyle(fontSize: 16),
-            ),
-            Text(
-              '- Insured Shipments',
-              style: TextStyle(fontSize: 16),
-            ),
-            Text(
-              '- Specialized Services',
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: 20),
-            Text(
-              'For information on rates and additional services, please contact our customer support team or visit our website.',
-              style: TextStyle(fontSize: 16),
-            ),],
+        children: [],
       ),
     );
   }

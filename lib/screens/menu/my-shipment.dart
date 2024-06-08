@@ -85,14 +85,10 @@ class _myShipmentScreenState extends State<myShipmentScreen> {
         itemCount: 5, // Kullanıcının gönderilerinin sayısı
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
-            title: Text('Shipment #${index + 1}'), // Gönderi numarası
-            subtitle: Text('Status: In Transit'), // Gönderi durumu
-            trailing: Icon(Icons
-                .arrow_forward), // Gönderi detaylarına gitmek için ok ikonu
-            onTap: () {
-              // Gönderi detayları sayfasına gitmek için işlevsellik eklenebilir
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => ShipmentDetailsPage()));
-            },
+            title: Text('Shipment #${index + 1}'),
+            subtitle: Text('Status: In Transit'),
+            trailing: Icon(Icons.arrow_forward),
+            onTap: () {},
           );
         },
       ),
