@@ -65,14 +65,14 @@ class _BoardingScreenState extends State<BoardingScreen> {
               onTap: () async {
                 final storage = Storage();
                 await storage.firstLauched();
-                GoRouter.of(context).go("/home");
+                GoRouter.of(context).go("/login");
               },
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Padding(
                   // Kullanıcının rahat tıklaması için text'e padding verdik.
                   padding: const EdgeInsets.all(8.0),
-                  child: page == 2 ? const Text("Finish") : const Text("Skip"),
+                  child: page == 4 ? const Text("Finish") : const Text("Skip"),
                 ),
               ),
             ),

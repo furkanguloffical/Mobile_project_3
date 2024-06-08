@@ -17,7 +17,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Page'),
+        title: Image.network(
+          "https://i.pinimg.com/originals/c3/c4/09/c3c40926dca06a97dd0562753d63b7f4.png",
+          height: 80,
+        ),
       ),
       drawer: Drawer(
         child: Padding(
@@ -55,46 +58,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-
               InkwellMenu(context, "Home", '/home', Icon(Icons.home)),
-              InkwellMenu(context, "Login", '/login', Icon(Icons.account_box)),
-              InkwellMenu(context, "Track Shipment ", '/client/login.dart',
+              InkwellMenu(context, "Track Shipment ", '/trackShipment',
                   Icon(Icons.search)),
-              InkwellMenu(context, "Create Shipment ", '/client/login.dart',
+              InkwellMenu(context, "Create Shipment ", '/createShipment',
                   Icon(Icons.add_box)),
-              InkwellMenu(context, "My Shipments ", 'client/favorite.dart',
-                  Icon(Icons.inbox)),
-              InkwellMenu(context, "Rates and Services  ", '/',
+              InkwellMenu(
+                  context, "My Shipments ", '/myShipment', Icon(Icons.inbox)),
+              InkwellMenu(context, "Rates and Services  ", '/ratesAndServices',
                   Icon(Icons.monetization_on)),
-              InkwellMenu(context, "Support", '/', Icon(Icons.support_agent)),
               InkwellMenu(
-                  context, "Find a Location ", '/', Icon(Icons.location_on)),
-              InkwellMenu(context, "Profile", '/', Icon(Icons.person)),
-
+                  context, "Support", '/support', Icon(Icons.support_agent)),
+              InkwellMenu(context, "Find a Location ", '/findALocation',
+                  Icon(Icons.location_on)),
+              InkwellMenu(context, "Profile", '/profile', Icon(Icons.person)),
+              InkwellMenu(context, "Notifications", '/notifications',
+                  Icon(Icons.notifications)),
               InkwellMenu(
-                  context, "Notifications", '/', Icon(Icons.notifications)),
-              InkwellMenu(context, "Settings", '/', Icon(Icons.settings)),
-              InkwellMenu(context, "Contact ", '/', Icon(Icons.call)),
-              InkwellMenu(context, "About Us", '/', Icon(Icons.person)),
+                  context, "Settings", '/settings', Icon(Icons.settings)),
+              InkwellMenu(context, "Contact ", '/contact', Icon(Icons.call)),
+              InkwellMenu(context, "About Us", '/about', Icon(Icons.person)),
               InkwellMenu(context, "Logout", '/', Icon(Icons.logout)),
-              // ElevatedButton(
-              //   onPressed: () {
-              //     clientCubit.changeDarkMode(darkMode: true);
-              //   },
-              //   child: Text('DarkMode'),
-              // ),
-              // ElevatedButton(
-              //   onPressed: () {
-              //     clientCubit.changeDarkMode(darkMode: false);
-              //   },
-              //   child: Text('LightMode'),
-              // ),
-              // ElevatedButton(
-              //   onPressed: () {
-              //     // Kiralama işlevini burada gerçekleştirin
-              //   },
-              //   child: Text('Language'),
-              // ),
             ],
           ),
         ),
@@ -104,7 +88,6 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Header(),
             FeaturesSection(),
-            TrackingSection(),
             Testimonials(),
             Footer(),
           ],
@@ -117,14 +100,9 @@ class _HomeScreenState extends State<HomeScreen> {
 class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20.0),
       color: Color.fromARGB(255, 22, 180, 254),
       child: Column(
         children: [
-          Image.network(
-            "https://i.pinimg.com/originals/c3/c4/09/c3c40926dca06a97dd0562753d63b7f4.png",
-            height: 100,
-          ),
           SizedBox(height: 10),
           Text(
             'Welcome to Global Reach Logistics',
@@ -163,6 +141,7 @@ class FeaturesSection extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                // Our services
                 FeatureItem(
                   icon: Icons.local_shipping,
                   title: 'Fast Delivery',
@@ -242,37 +221,6 @@ class FeatureItem extends StatelessWidget {
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
         SizedBox(height: 5),
       ],
-    );
-  }
-}
-
-class TrackingSection extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey[200],
-      padding: EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Track Your Shipment',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 10),
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'Enter your tracking number',
-              border: OutlineInputBorder(),
-            ),
-          ),
-          SizedBox(height: 10),
-          ElevatedButton(
-            onPressed: () => GoRouter.of(context).go("/trackShipment"),
-            child: Text('Track'),
-          ),
-        ],
-      ),
     );
   }
 }

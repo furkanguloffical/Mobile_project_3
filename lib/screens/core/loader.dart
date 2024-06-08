@@ -18,7 +18,7 @@ class _LoaderScreenState extends State<LoaderScreen> {
     if (firstLaunch) {
       GoRouter.of(context).replace("/boarding");
     } else {
-      GoRouter.of(context).replace("/home");
+      GoRouter.of(context).replace("/login");
     }
   }
 
