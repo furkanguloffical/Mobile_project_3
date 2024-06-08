@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+class myShipmentScreen extends StatefulWidget {
+  const myShipmentScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<myShipmentScreen> createState() => _myShipmentScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _myShipmentScreenState extends State<myShipmentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +19,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text("Login Screen"),
+          const Text("myShipment Screen"),
           const Gap(20),
           IconButton(
             onPressed: () => GoRouter.of(context).go("/home"),

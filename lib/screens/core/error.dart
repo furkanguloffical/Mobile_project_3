@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+class ErrorScreen extends StatefulWidget {
+  const ErrorScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<ErrorScreen> createState() => _ErrorScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _ErrorScreenState extends State<ErrorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +19,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text("Login Screen"),
+          const Text("404 - Not Found"),
           const Gap(20),
           IconButton(
             onPressed: () => GoRouter.of(context).go("/home"),
