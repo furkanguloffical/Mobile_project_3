@@ -81,12 +81,19 @@ class _tranckShipmentScreenState extends State<tranckShipmentScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            TrackingSection(),
-            Footer(),
-          ],
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: [
+                Image.network(
+                    "https://img.freepik.com/free-vector/hand-drawn-delivery-concept-with-smartphone_23-2149149267.jpg?size=626&ext=jpg&ga=GA1.1.672697106.1717632000&semt=ais_user"),
+                Gap(30),
+                TrackingSection(),
+              ],
+            ),
+          ),
         ),
       ),
     );
@@ -97,10 +104,10 @@ class TrackingSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[200],
+      color: const Color.fromARGB(255, 255, 255, 255),
       padding: EdgeInsets.all(20.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             'Track Your Shipment',
@@ -117,56 +124,6 @@ class TrackingSection extends StatelessWidget {
           ElevatedButton(
             onPressed: () => GoRouter.of(context).go("/trackShipment"),
             child: Text('Track'),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class Footer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(20.0),
-      color: Colors.blueAccent,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Contact Us',
-            style: TextStyle(
-                fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 10),
-          Text(
-            'Email: info@globalreachlogistics.com',
-            style: TextStyle(fontSize: 16, color: Colors.white),
-          ),
-          Text(
-            'Phone: +90 (212) 123-4567',
-            style: TextStyle(fontSize: 16, color: Colors.white),
-          ),
-          SizedBox(height: 10),
-          Row(
-            children: [
-              IconButton(
-                icon: Icon(Icons.facebook, color: Colors.white),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: const Icon(CupertinoIcons.mail, color: Colors.white),
-                onPressed: () {
-                  // Navigate to Facebook page
-                },
-              ),
-              IconButton(
-                icon: const Icon(CupertinoIcons.phone, color: Colors.white),
-                onPressed: () {
-                  // Navigate to Facebook page
-                },
-              ),
-            ],
           ),
         ],
       ),

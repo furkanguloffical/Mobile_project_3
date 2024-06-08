@@ -84,91 +84,9 @@ class _createShimentScreenState extends State<createShimentScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TrackingSection(),
-            Footer(),
+            Product(),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class TrackingSection extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey[200],
-      padding: EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Track Your Shipment',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 10),
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'Enter your tracking number',
-              border: OutlineInputBorder(),
-            ),
-          ),
-          SizedBox(height: 10),
-          ElevatedButton(
-            onPressed: () => GoRouter.of(context).go("/trackShipment"),
-            child: Text('Track'),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class Footer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(20.0),
-      color: Colors.blueAccent,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Contact Us',
-            style: TextStyle(
-                fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 10),
-          Text(
-            'Email: info@globalreachlogistics.com',
-            style: TextStyle(fontSize: 16, color: Colors.white),
-          ),
-          Text(
-            'Phone: +90 (212) 123-4567',
-            style: TextStyle(fontSize: 16, color: Colors.white),
-          ),
-          SizedBox(height: 10),
-          Row(
-            children: [
-              IconButton(
-                icon: Icon(Icons.facebook, color: Colors.white),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: const Icon(CupertinoIcons.mail, color: Colors.white),
-                onPressed: () {
-                  // Navigate to Facebook page
-                },
-              ),
-              IconButton(
-                icon: const Icon(CupertinoIcons.phone, color: Colors.white),
-                onPressed: () {
-                  // Navigate to Facebook page
-                },
-              ),
-            ],
-          ),
-        ],
       ),
     );
   }
@@ -193,4 +111,75 @@ InkWell InkwellMenu(
       ),
     ),
   );
+}
+
+class Product extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Text(
+              'Sender Information',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            // Sender information fields (e.g., name, address, contact info)
+            TextField(
+              decoration: InputDecoration(labelText: 'Sender Name'),
+            ),
+            TextField(
+              decoration: InputDecoration(labelText: 'Sender Address'),
+            ),
+            TextField(
+              decoration: InputDecoration(labelText: 'Sender Phone'),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Recipient Information',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            // Recipient information fields (e.g., name, address, contact info)
+            TextField(
+              decoration: InputDecoration(labelText: 'Recipient Name'),
+            ),
+            TextField(
+              decoration: InputDecoration(labelText: 'Recipient Address'),
+            ),
+            TextField(
+              decoration: InputDecoration(labelText: 'Recipient Phone'),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Shipment Details',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            // Shipment details fields (e.g., weight, dimensions, content)
+            TextField(
+              decoration: InputDecoration(labelText: 'Weight (kg)'),
+            ),
+            TextField(
+              decoration: InputDecoration(labelText: 'Dimensions (cm)'),
+            ),
+            TextField(
+              decoration: InputDecoration(labelText: 'Content'),
+            ),
+            SizedBox(height: 20),
+            // Create Shipment button
+            Center(
+              child: ElevatedButton(
+                onPressed: () => GoRouter.of(context).go("/successfulShipment"),
+                child: Text('Create Shipment'),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

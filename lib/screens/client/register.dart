@@ -17,7 +17,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: const DecorationImage(
-            image: AssetImage("assets/image/background.jpg"),
+            image: AssetImage(
+                "/Users/furkangul/Lessons/Flutter/mobile_project_3/assets/images/register.jpg"),
             fit: BoxFit.cover,
           ),
         ),

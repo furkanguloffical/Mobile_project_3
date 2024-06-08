@@ -84,8 +84,7 @@ class _ratesAndServicesScreenState extends State<ratesAndServicesScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TrackingSection(),
-            Footer(),
+            Product(),
           ],
         ),
       ),
@@ -93,85 +92,33 @@ class _ratesAndServicesScreenState extends State<ratesAndServicesScreen> {
   }
 }
 
-class TrackingSection extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey[200],
-      padding: EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Track Your Shipment',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+@override
+Widget build(BuildContext context) {
+  return Container(
+    color: Colors.grey[200],
+    padding: EdgeInsets.all(20.0),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Track Your Shipment',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(height: 10),
+        TextField(
+          decoration: InputDecoration(
+            hintText: 'Enter your tracking number',
+            border: OutlineInputBorder(),
           ),
-          SizedBox(height: 10),
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'Enter your tracking number',
-              border: OutlineInputBorder(),
-            ),
-          ),
-          SizedBox(height: 10),
-          ElevatedButton(
-            onPressed: () => GoRouter.of(context).go("/trackShipment"),
-            child: Text('Track'),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class Footer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(20.0),
-      color: Colors.blueAccent,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Contact Us',
-            style: TextStyle(
-                fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 10),
-          Text(
-            'Email: info@globalreachlogistics.com',
-            style: TextStyle(fontSize: 16, color: Colors.white),
-          ),
-          Text(
-            'Phone: +90 (212) 123-4567',
-            style: TextStyle(fontSize: 16, color: Colors.white),
-          ),
-          SizedBox(height: 10),
-          Row(
-            children: [
-              IconButton(
-                icon: Icon(Icons.facebook, color: Colors.white),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: const Icon(CupertinoIcons.mail, color: Colors.white),
-                onPressed: () {
-                  // Navigate to Facebook page
-                },
-              ),
-              IconButton(
-                icon: const Icon(CupertinoIcons.phone, color: Colors.white),
-                onPressed: () {
-                  // Navigate to Facebook page
-                },
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
+        ),
+        SizedBox(height: 10),
+        ElevatedButton(
+          onPressed: () => GoRouter.of(context).go("/trackShipment"),
+          child: Text('Track'),
+        ),
+      ],
+    ),
+  );
 }
 
 InkWell InkwellMenu(
@@ -193,4 +140,55 @@ InkWell InkwellMenu(
       ),
     ),
   );
+}
+
+class Product extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: const Column(
+        children: [Text(
+              'Our Rates and Services',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'At Shipping Company, we offer competitive rates and a wide range of services to meet your shipping needs. Whether you're shipping domestically or internationally, we have options for you.',
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Our Services Include:',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            Text(
+              '- Domestic Shipping',
+              style: TextStyle(fontSize: 16),
+            ),
+            Text(
+              '- International Shipping',
+              style: TextStyle(fontSize: 16),
+            ),
+            Text(
+              '- Express Delivery',
+              style: TextStyle(fontSize: 16),
+            ),
+            Text(
+              '- Insured Shipments',
+              style: TextStyle(fontSize: 16),
+            ),
+            Text(
+              '- Specialized Services',
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'For information on rates and additional services, please contact our customer support team or visit our website.',
+              style: TextStyle(fontSize: 16),
+            ),],
+      ),
+    );
+  }
 }

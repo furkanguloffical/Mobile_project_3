@@ -14,19 +14,113 @@ class _ContactScreenState extends State<ContactScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: Center(
-              child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text("Contact Screen"),
-          const Gap(20),
-          IconButton(
-            onPressed: () => GoRouter.of(context).go("/home"),
-            icon: const Icon(CupertinoIcons.chevron_back),
+      appBar: AppBar(
+        title: Image.network(
+          "https://i.pinimg.com/originals/c3/c4/09/c3c40926dca06a97dd0562753d63b7f4.png",
+          height: 80,
+        ),
+      ),
+      drawer: Drawer(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 80,
           ),
+          child: Column(
+            children: [
+              Container(
+                child: InkWell(
+                  onTap: () => Navigator.pushNamed(context, '/home'),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        SizedBox(width: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Menu",
+                              style: TextStyle(
+                                fontSize: 35,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () => GoRouter.of(context).pop(),
+                              icon: const Icon(CupertinoIcons.chevron_back),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              InkwellMenu(context, "Home", '/home', Icon(Icons.home)),
+              InkwellMenu(context, "Track Shipment ", '/trackShipment',
+                  Icon(Icons.search)),
+              InkwellMenu(context, "Create Shipment ", '/createShipment',
+                  Icon(Icons.add_box)),
+              InkwellMenu(
+                  context, "My Shipments ", '/myShipment', Icon(Icons.inbox)),
+              InkwellMenu(context, "Rates and Services  ", '/ratesAndServices',
+                  Icon(Icons.monetization_on)),
+              InkwellMenu(
+                  context, "Support", '/support', Icon(Icons.support_agent)),
+              InkwellMenu(context, "Find a Location ", '/findALocation',
+                  Icon(Icons.location_on)),
+              InkwellMenu(context, "Profile", '/profile', Icon(Icons.person)),
+              InkwellMenu(context, "Notifications", '/notifications',
+                  Icon(Icons.notifications)),
+              InkwellMenu(
+                  context, "Settings", '/settings', Icon(Icons.settings)),
+              InkwellMenu(context, "Contact ", '/contact', Icon(Icons.call)),
+              InkwellMenu(context, "About Us", '/about', Icon(Icons.person)),
+              InkwellMenu(context, "Logout", '/', Icon(Icons.logout)),
+            ],
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Product(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+InkWell InkwellMenu(
+    BuildContext context, String name, String route, Icon icon) {
+  return InkWell(
+    onTap: () {
+      Navigator.pop(context); // Close the drawer
+      GoRouter.of(context).go(route);
+    },
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          icon,
+          SizedBox(width: 10),
+          Text(name),
         ],
-      ))),
+      ),
+    ),
+  );
+}
+
+class Product extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: const Column(
+        children: [],
+      ),
     );
   }
 }

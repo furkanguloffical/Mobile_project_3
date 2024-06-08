@@ -19,6 +19,7 @@ import '../screens/product/search.dart';
 import '../screens/static/about.dart';
 import '../screens/static/boarding.dart';
 import '../screens/static/contact.dart';
+import '../screens/static/succesfull-shipment.dart';
 
 final routes = GoRouter(
   errorBuilder: (context, state) => const ErrorScreen(),
@@ -94,6 +95,10 @@ final routes = GoRouter(
     GoRoute(
       path: '/settings',
       builder: (context, state) => const settingsScreen(),
+    ),
+    GoRoute(
+      path: '/successfulShipment',
+      builder: (context, state) => SuccessfulShipmentScreen(),
     ),
   ],
 );

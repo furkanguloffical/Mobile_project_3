@@ -1,24 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-class supportScreen extends StatefulWidget {
-  const supportScreen({super.key});
-
-  @override
-  State<supportScreen> createState() => _supportScreenState();
+void main() {
+  runApp(MyApp());
 }
 
-class _supportScreenState extends State<supportScreen> {
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: SuccessfulShipmentScreen(),
+    );
+  }
+}
+
+class SuccessfulShipmentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.network(
-          "https://i.pinimg.com/originals/c3/c4/09/c3c40926dca06a97dd0562753d63b7f4.png",
-          height: 80,
+        title: Text(
+          'Successful Shipment Created',
+          style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
         ),
+        backgroundColor: Colors.green,
       ),
       drawer: Drawer(
         child: Padding(
@@ -81,44 +87,35 @@ class _supportScreenState extends State<supportScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Product(),
-          ],
+      body: const Center(
+        child: Padding(
+          padding: EdgeInsets.all(10.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.check_circle_outline,
+                color: Colors.green,
+                size: 100,
+              ),
+              SizedBox(height: 20),
+              Text(
+                'Your shipment has been successfully created!',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Thank you for choosing our shipping service. Your package is now ready to be shipped. You will receive a confirmation email shortly with the details of your shipment.',
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
-}
-
-@override
-Widget build(BuildContext context) {
-  return Container(
-    color: Colors.grey[200],
-    padding: EdgeInsets.all(20.0),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Track Your Shipment',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(height: 10),
-        TextField(
-          decoration: InputDecoration(
-            hintText: 'Enter your tracking number',
-            border: OutlineInputBorder(),
-          ),
-        ),
-        SizedBox(height: 10),
-        ElevatedButton(
-          onPressed: () => GoRouter.of(context).go("/trackShipment"),
-          child: Text('Track'),
-        ),
-      ],
-    ),
-  );
 }
 
 InkWell InkwellMenu(
@@ -134,22 +131,10 @@ InkWell InkwellMenu(
         mainAxisSize: MainAxisSize.max,
         children: [
           icon,
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Text(name),
         ],
       ),
     ),
   );
-}
-
-class Product extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: const Column(
-        children: [],
-      ),
-    );
-  }
 }

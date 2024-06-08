@@ -17,6 +17,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor:
+            const Color.fromARGB(255, 255, 255, 255), // AppBar'ın sabit rengi
+        elevation: 0.0,
         title: Image.network(
           "https://i.pinimg.com/originals/c3/c4/09/c3c40926dca06a97dd0562753d63b7f4.png",
           height: 80,
@@ -83,14 +86,57 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Header(),
-            FeaturesSection(),
-            Testimonials(),
-            Footer(),
-          ],
+      body: Container(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Header(),
+              FeaturesSection(),
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Container(
+                  child: const Column(
+                    children: [
+                      Text(
+                        'Our Advantages',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      Gap(15),
+                      Text(
+                        'Customer satisfaction and safe delivery are our top priorities. With fast and trackable shipments, competitive prices, insured options, and a 24/7 customer support line, we are here for you.',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      Gap(15),
+                      Text(
+                        'Promotions and Discounts',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      Gap(15),
+                      Text(
+                        'At Shipping Company, we regularly offer promotions and special discounts. With discounted rates, free delivery options, and loyalty programs, we thank our valued customers.',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      Gap(15),
+                      Text(
+                        'Contact Information',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      Gap(15),
+                      Text(
+                        'If you have any questions or need assistance, feel free to contact us. You can reach us at our 24/7 customer support line or visit our branches for assistance. We look forward to serving you.',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Testimonials(),
+              Footer(),
+            ],
+          ),
         ),
       ),
     );
@@ -100,13 +146,16 @@ class _HomeScreenState extends State<HomeScreen> {
 class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
-      color: Color.fromARGB(255, 22, 180, 254),
+      color: Color.fromARGB(255, 255, 255, 255),
       child: Column(
         children: [
           SizedBox(height: 10),
           Text(
             'Welcome to Global Reach Logistics',
-            style: TextStyle(fontSize: 24, color: Colors.white),
+            style: TextStyle(
+                fontSize: 24,
+                color: Color.fromARGB(255, 15, 152, 183),
+                fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 20),
@@ -135,7 +184,7 @@ class FeaturesSection extends StatelessWidget {
             'Our Services',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 10),
+          Gap(20),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
@@ -240,12 +289,21 @@ class Testimonials extends StatelessWidget {
           SizedBox(height: 10),
           TestimonialItem(
             text:
-                'PrimePath Logistics provided excellent service and timely delivery.',
-            author: 'John Doe',
+                'Global Reach Logistics provided excellent service and timely delivery.',
+            author: 'Keyvan Arasteh',
           ),
           TestimonialItem(
             text: 'Very reliable and secure shipping. Highly recommended!',
-            author: 'Jane Smith',
+            author: 'Furkan Gul',
+          ),
+          TestimonialItem(
+            text:
+                'I am very impressed with the speed and reliability of Shipping Company\'s delivery service.',
+            author: 'Sophia Rodriguez',
+          ),
+          TestimonialItem(
+            text: 'Fast delivery and easy tracking. Highly recommended!',
+            author: 'Alexander Smith',
           ),
         ],
       ),
@@ -312,19 +370,15 @@ class Footer extends StatelessWidget {
             children: [
               IconButton(
                 icon: Icon(Icons.facebook, color: Colors.white),
-                onPressed: () {},
+                onPressed: () => GoRouter.of(context).go("/about"),
               ),
               IconButton(
                 icon: const Icon(CupertinoIcons.mail, color: Colors.white),
-                onPressed: () {
-                  // Navigate to Facebook page
-                },
+                onPressed: () => GoRouter.of(context).go("/contact"),
               ),
               IconButton(
                 icon: const Icon(CupertinoIcons.phone, color: Colors.white),
-                onPressed: () {
-                  // Navigate to Facebook page
-                },
+                onPressed: () => GoRouter.of(context).go("/contact"),
               ),
             ],
           ),

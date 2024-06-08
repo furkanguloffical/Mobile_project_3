@@ -15,9 +15,10 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          image: const DecorationImage(
-            image: AssetImage("assets/image/background.jpg"),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+                "/Users/furkangul/Lessons/Flutter/mobile_project_3/assets/images/login.jpg"),
             fit: BoxFit.cover,
           ),
         ),
