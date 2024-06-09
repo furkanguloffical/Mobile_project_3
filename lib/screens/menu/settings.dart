@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-class settingsScreen extends StatefulWidget {
-  const settingsScreen({super.key});
+class SettingsScreen extends StatefulWidget {
+  const SettingsScreen({super.key});
 
   @override
-  State<settingsScreen> createState() => _settingsScreenState();
+  State<SettingsScreen> createState() => _SettingsScreenState();
 }
 
-class _settingsScreenState extends State<settingsScreen> {
-  get clientCubit => null;
+class _SettingsScreenState extends State<SettingsScreen> {
+  bool isDarkMode = false;
+  String selectedLanguage = 'en';
+  bool notificationsEnabled = true;
 
   @override
   Widget build(BuildContext context) {
@@ -29,32 +31,30 @@ class _settingsScreenState extends State<settingsScreen> {
           ),
           child: Column(
             children: [
-              Container(
-                child: InkWell(
-                  onTap: () => Navigator.pushNamed(context, '/home'),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        SizedBox(width: 10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Menu",
-                              style: TextStyle(
-                                fontSize: 35,
-                                fontWeight: FontWeight.bold,
-                              ),
+              InkWell(
+                onTap: () => Navigator.pushNamed(context, '/home'),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      SizedBox(width: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Menu",
+                            style: TextStyle(
+                              fontSize: 35,
+                              fontWeight: FontWeight.bold,
                             ),
-                            IconButton(
-                              onPressed: () => GoRouter.of(context).pop(),
-                              icon: const Icon(CupertinoIcons.chevron_back),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                          IconButton(
+                            onPressed: () => GoRouter.of(context).pop(),
+                            icon: const Icon(CupertinoIcons.chevron_back),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -84,35 +84,107 @@ class _settingsScreenState extends State<settingsScreen> {
         ),
       ),
       body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Gap(20),
-              Product(),
-              Gap(20),
-              ElevatedButton(
-                onPressed: () {
-                  clientCubit.changeDarkMode(darkMode: true);
-                },
-                child: Text('DarkMode'),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  children: [
+                    Column(
+                      children: [
+                        Gap(50),
+                        Text(
+                          'Current Mode: ${isDarkMode ? "Dark" : "Light"}',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Roboto',
+                              fontSize: 17),
+                        ),
+                        Gap(10),
+                        Text(
+                          'Selected Language: $selectedLanguage',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Roboto',
+                              fontSize: 17),
+                        ),
+                        Gap(10),
+                        Text(
+                          'Notifications: ${notificationsEnabled ? "Enabled" : "Disabled"}',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Roboto',
+                              fontSize: 17),
+                        ),
+                      ],
+                    ),
+                    Gap(40),
+                    DropdownButton<String>(
+                      value: selectedLanguage,
+                      items: [
+                        DropdownMenuItem(
+                          value: 'en',
+                          child: Text('English'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'es',
+                          child: Text('Spanish'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'fr',
+                          child: Text('French'),
+                        ),
+                      ],
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedLanguage = newValue!;
+                        });
+                      },
+                    ),
+                  ],
+                ),
               ),
-              Gap(20),
-              ElevatedButton(
-                onPressed: () {
-                  clientCubit.changeDarkMode(darkMode: false);
-                },
-                child: Text('LightMode'),
-              ),
-              Gap(20),
-              ElevatedButton(
-                onPressed: () {
-                  clientCubit.changeLanguage(language: 'en');
-                },
-                child: Text('Language'),
-              ),
-              Gap(20),
-            ],
-          ),
+            ),
+            Gap(60),
+            SwitchListTile(
+              title: Text('Enable Notifications'),
+              value: notificationsEnabled,
+              onChanged: (bool value) {
+                setState(() {
+                  notificationsEnabled = value;
+                });
+              },
+            ),
+            Gap(20),
+            SwitchListTile(
+              title: Text('Dark Mode'),
+              value: isDarkMode,
+              onChanged: (bool value) {
+                setState(() {
+                  isDarkMode = value;
+                });
+              },
+            ),
+            Gap(20),
+            ListTile(
+              title: Text('Privacy Policy'),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                GoRouter.of(context).go("/PrivacyPolicy");
+              },
+            ),
+            Gap(20),
+            ListTile(
+              title: Text('Change Password'),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                GoRouter.of(context).go("/ChangePassword");
+              },
+            ),
+            Gap(20),
+          ],
         ),
       ),
     );

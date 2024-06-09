@@ -19,6 +19,7 @@ import '../screens/product/search.dart';
 import '../screens/static/about.dart';
 import '../screens/static/boarding.dart';
 import '../screens/static/contact.dart';
+import '../screens/static/privacy-policy.dart';
 import '../screens/static/succesfull-shipment.dart';
 
 final routes = GoRouter(
@@ -90,15 +91,19 @@ final routes = GoRouter(
     ),
     GoRoute(
       path: '/notifications',
-      builder: (context, state) => const notificationsScreen(),
+      builder: (context, state) => const NotificationsScreen(),
     ),
     GoRoute(
       path: '/settings',
-      builder: (context, state) => const settingsScreen(),
+      builder: (context, state) => const SettingsScreen(),
     ),
     GoRoute(
       path: '/successfulShipment',
       builder: (context, state) => SuccessfulShipmentScreen(),
+    ),
+    GoRoute(
+      path: '/PrivacyPolicy',
+      builder: (context, state) => PrivacyPolicy(),
     ),
   ],
 );

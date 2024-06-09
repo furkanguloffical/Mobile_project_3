@@ -27,32 +27,30 @@ class _findALocationScreenState extends State<findALocationScreen> {
           ),
           child: Column(
             children: [
-              Container(
-                child: InkWell(
-                  onTap: () => Navigator.pushNamed(context, '/home'),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        SizedBox(width: 10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Menu",
-                              style: TextStyle(
-                                fontSize: 35,
-                                fontWeight: FontWeight.bold,
-                              ),
+              InkWell(
+                onTap: () => Navigator.pushNamed(context, '/home'),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      SizedBox(width: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Menu",
+                            style: TextStyle(
+                              fontSize: 35,
+                              fontWeight: FontWeight.bold,
                             ),
-                            IconButton(
-                              onPressed: () => GoRouter.of(context).pop(),
-                              icon: const Icon(CupertinoIcons.chevron_back),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                          IconButton(
+                            onPressed: () => GoRouter.of(context).pop(),
+                            icon: const Icon(CupertinoIcons.chevron_back),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -84,7 +82,8 @@ class _findALocationScreenState extends State<findALocationScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Product(),
+            Gap(20),
+            LocationSearch(),
           ],
         ),
       ),
@@ -113,13 +112,31 @@ InkWell InkwellMenu(
   );
 }
 
-class Product extends StatelessWidget {
+class LocationSearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: const Column(
-        children: [],
+      child: Column(
+        children: [
+          TextField(
+            decoration: InputDecoration(
+              labelText: 'Search for a location',
+              border: OutlineInputBorder(),
+              prefixIcon: Icon(Icons.search),
+            ),
+          ),
+          Gap(20),
+          ElevatedButton(
+            onPressed: () {
+              // Implement search functionality here
+            },
+            child: Text('Search'),
+          ),
+          Gap(20),
+          // Placeholder for search results
+          Text('Search results will appear here'),
+        ],
       ),
     );
   }

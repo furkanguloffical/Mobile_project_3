@@ -147,9 +147,84 @@ class Product extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: const Column(
-        children: [],
+      child: Column(
+        children: [
+          const Text(
+            'How can we help you?',
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+          const Gap(10),
+          const Divider(),
+          const Gap(10),
+          SupportCard(
+            question: 'How do I track my package?',
+            answer:
+                'You can track your package using the tracking number provided to you. Enter it on our tracking page to see the latest updates.',
+          ),
+          const Divider(),
+          SupportCard(
+            question: 'What are your shipping rates?',
+            answer:
+                'Our shipping rates vary depending on the service chosen and the destination. Please visit our rates page for detailed information.',
+          ),
+          const Divider(),
+          SupportCard(
+            question: 'How do I schedule a pickup?',
+            answer:
+                'To schedule a pickup, log into your account, go to the Schedule Pickup section, and fill out the required details. You can also call our customer service.',
+          ),
+          const Divider(),
+          SupportCard(
+            question: 'What is your delivery time?',
+            answer:
+                'Delivery times depend on the service selected. Express delivery takes 1-2 days, standard shipping takes 3-5 days, and international shipping times vary by destination.',
+          ),
+          const Divider(),
+          SupportCard(
+            question: 'How do I contact customer service?',
+            answer:
+                'You can contact our customer service via phone at 1-800-123-4567, email at support@globalreachlogistics.com, or through our live chat on the website.',
+          ),
+          const Divider(),
+          SupportCard(
+            question: 'What should I do if my package is lost?',
+            answer:
+                'If your package is lost, please contact our customer service immediately with your tracking number and shipment details. We will assist you in locating your package.',
+          ),
+          const Divider(),
+          SupportCard(
+            question: 'How do I file a claim for a damaged package?',
+            answer:
+                'To file a claim for a damaged package, fill out the claims form on our website, including photos of the damage and your shipment details. Our team will review and process your claim.',
+          ),
+        ],
       ),
+    );
+  }
+}
+
+class SupportCard extends StatelessWidget {
+  final String question;
+  final String answer;
+
+  SupportCard({required this.question, required this.answer});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          question,
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(height: 8),
+        Text(
+          answer,
+          style: TextStyle(fontSize: 16),
+        ),
+        SizedBox(height: 20),
+      ],
     );
   }
 }

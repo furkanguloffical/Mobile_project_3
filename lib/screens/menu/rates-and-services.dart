@@ -96,25 +96,25 @@ class _ratesAndServicesScreenState extends State<ratesAndServicesScreen> {
 Widget build(BuildContext context) {
   return Container(
     color: Colors.grey[200],
-    padding: EdgeInsets.all(20.0),
+    padding: const EdgeInsets.all(20.0),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Track Your Shipment',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 10),
-        TextField(
+        const Gap(10),
+        const TextField(
           decoration: InputDecoration(
             hintText: 'Enter your tracking number',
             border: OutlineInputBorder(),
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         ElevatedButton(
           onPressed: () => GoRouter.of(context).go("/trackShipment"),
-          child: Text('Track'),
+          child: const Text('Track'),
         ),
       ],
     ),
@@ -134,7 +134,7 @@ InkWell InkwellMenu(
         mainAxisSize: MainAxisSize.max,
         children: [
           icon,
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Text(name),
         ],
       ),
@@ -145,10 +145,106 @@ InkWell InkwellMenu(
 class Product extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: const Column(
-        children: [],
+    return const Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Padding(
+        padding: EdgeInsets.all(15.0),
+        child: Column(
+          children: [
+            ServiceCard(
+              serviceName: 'Express Delivery',
+              description:
+                  'Get your packages delivered swiftly and securely with our express delivery service. Perfect for urgent shipments.',
+              rate: '\$100',
+            ),
+            Divider(),
+            ServiceCard(
+              serviceName: 'Standard Shipping',
+              description:
+                  'Our standard shipping service offers reliable and affordable delivery for all your packages.',
+              rate: '\$150',
+            ),
+            Divider(),
+            ServiceCard(
+              serviceName: 'International Shipping',
+              description:
+                  'We provide seamless international shipping solutions to ensure your packages reach any global destination on time.',
+              rate: '\$200',
+            ),
+            Divider(),
+            ServiceCard(
+              serviceName: 'Same Day Delivery',
+              description:
+                  'For those times when you need it now, our same-day delivery service guarantees your package will arrive within hours.',
+              rate: '\$200',
+            ),
+            Divider(),
+            ServiceCard(
+              serviceName: 'Overnight Shipping',
+              description:
+                  'Send your urgent packages overnight with our fast and efficient overnight shipping service.',
+              rate: '\$200',
+            ),
+            Divider(),
+            ServiceCard(
+              serviceName: 'Freight Services',
+              description:
+                  'Our freight services are ideal for large and heavy shipments, providing safe and reliable transport for your cargo.',
+              rate: '\$200',
+            ),
+            Divider(),
+            ServiceCard(
+              serviceName: 'Eco-Friendly Shipping',
+              description:
+                  'Choose our eco-friendly shipping option to reduce your carbon footprint without compromising on service quality.',
+              rate: '\$200',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ServiceCard extends StatelessWidget {
+  final String serviceName;
+  final String description;
+  final String rate;
+
+  const ServiceCard({
+    required this.serviceName,
+    required this.description,
+    required this.rate,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4.0,
+      margin: const EdgeInsets.symmetric(vertical: 10.0),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              serviceName,
+              style:
+                  const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+            ),
+            const Gap(10),
+            Text(
+              description,
+              style: const TextStyle(fontSize: 16.0),
+            ),
+            const Gap(10),
+            Text(
+              rate,
+              style:
+                  const TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
       ),
     );
   }

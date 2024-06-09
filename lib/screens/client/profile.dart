@@ -84,12 +84,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Container(
-          decoration: BoxDecoration(
-            image: const DecorationImage(
-              image: AssetImage("assets/image/background.jpg"),
-              fit: BoxFit.cover,
-            ),
-          ),
           child: Center(
             child: Column(children: [
               SizedBox(height: 30),
@@ -97,12 +91,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
+                    width: 200,
+                    height: 200,
                     padding: EdgeInsets.all(4),
                     decoration: BoxDecoration(
+                        border: Border.all(
+                          color: const Color.fromARGB(255, 82, 177,
+                              255), // Sınır rengini buradan ayarlayabilirsiniz
+                          width:
+                              5.0, // Sınır kalınlığını buradan ayarlayabilirsiniz
+                        ),
                         shape: BoxShape.circle,
                         color: Color.fromARGB(255, 255, 255, 255)),
                     child: CircleAvatar(
-                      radius: 90,
+                      radius: 100,
                       backgroundImage: AssetImage(
                           '/Users/furkangul/Lessons/Flutter/mobile_project_3/assets/images/person.jpg'),
                     ),
@@ -200,50 +202,4 @@ InkWell InkwellMenu(
       ),
     ),
   );
-}
-
-class Footer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(20.0),
-      color: Colors.blueAccent,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Contact Us',
-            style: TextStyle(
-                fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 10),
-          Text(
-            'Email: info@globalreachlogistics.com',
-            style: TextStyle(fontSize: 16, color: Colors.white),
-          ),
-          Text(
-            'Phone: +90 (212) 123-4567',
-            style: TextStyle(fontSize: 16, color: Colors.white),
-          ),
-          SizedBox(height: 10),
-          Row(
-            children: [
-              IconButton(
-                icon: Icon(Icons.facebook, color: Colors.white),
-                onPressed: () => GoRouter.of(context).go("/about"),
-              ),
-              IconButton(
-                icon: const Icon(CupertinoIcons.mail, color: Colors.white),
-                onPressed: () => GoRouter.of(context).go("/contact"),
-              ),
-              IconButton(
-                icon: const Icon(CupertinoIcons.phone, color: Colors.white),
-                onPressed: () => GoRouter.of(context).go("/contact"),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
 }

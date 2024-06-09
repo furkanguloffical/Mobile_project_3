@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-class notificationsScreen extends StatefulWidget {
-  const notificationsScreen({super.key});
+class NotificationsScreen extends StatefulWidget {
+  const NotificationsScreen({super.key});
 
   @override
-  State<notificationsScreen> createState() => _notificationsScreenState();
+  State<NotificationsScreen> createState() => _NotificationsScreenState();
 }
 
-class _notificationsScreenState extends State<notificationsScreen> {
+class _NotificationsScreenState extends State<NotificationsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,13 +114,73 @@ InkWell InkwellMenu(
 }
 
 class Product extends StatelessWidget {
+  final List<NotificationItem> notifications = [
+    NotificationItem(
+      title: 'Package Delivered',
+      message: 'Your package was delivered on June 9, 2024.',
+      date: 'June 9, 2024',
+    ),
+    NotificationItem(
+      title: 'Package at Distribution Center',
+      message:
+          'Your package arrived at the distribution center on June 8, 2024.',
+      date: 'June 8, 2024',
+    ),
+    NotificationItem(
+      title: 'Out for Delivery',
+      message: 'Your package is out for delivery on June 7, 2024.',
+      date: 'June 7, 2024',
+    ),
+    NotificationItem(
+      title: 'Package Arrived at Hub',
+      message: 'Your package arrived at the hub on June 6, 2024.',
+      date: 'June 6, 2024',
+    ),
+    NotificationItem(
+      title: 'Shipment Picked Up',
+      message: 'Your shipment was picked up on June 5, 2024.',
+      date: 'June 5, 2024',
+    ),
+    NotificationItem(
+      title: 'Shipment Created',
+      message: 'Your shipment was created on June 4, 2024.',
+      date: 'June 4, 2024',
+    ),
+    NotificationItem(
+      title: 'Package In Transit',
+      message: 'Your package is in transit as of June 3, 2024.',
+      date: 'June 3, 2024',
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: const Column(
-        children: [],
+      child: Column(
+        children: notifications.map((notification) {
+          return Card(
+            margin: EdgeInsets.all(10.0),
+            child: ListTile(
+              title: Text(notification.title),
+              subtitle: Text(notification.message),
+              trailing: Text(notification.date),
+            ),
+          );
+        }).toList(),
       ),
     );
   }
+}
+
+class NotificationItem {
+  final String title;
+  final String message;
+  final String date;
+
+  NotificationItem({
+    required this.title,
+    required this.message,
+    required this.date,
+  });
 }

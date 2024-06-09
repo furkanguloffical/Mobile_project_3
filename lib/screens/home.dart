@@ -90,8 +90,25 @@ class _HomeScreenState extends State<HomeScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              Gap(50),
               Header(),
+              Gap(25),
+              Divider(
+                color: Colors.black,
+                thickness: 2, // Çizginin kalınlığı
+                indent: 20, // Sol taraftan boşluk
+                endIndent: 20, // Sağ taraftan boşluk
+              ),
+              Gap(25),
               FeaturesSection(),
+              Gap(25),
+              Divider(
+                color: Colors.black,
+                thickness: 2, // Çizginin kalınlığı
+                indent: 20, // Sol taraftan boşluk
+                endIndent: 20, // Sağ taraftan boşluk
+              ),
+              Gap(25),
               Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: Container(
@@ -133,6 +150,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
+              Gap(25),
+              Divider(
+                color: Colors.black,
+                thickness: 2, // Çizginin kalınlığı
+                indent: 20, // Sol taraftan boşluk
+                endIndent: 20, // Sağ taraftan boşluk
+              ),
+              Gap(25),
               Testimonials(),
               Footer(),
             ],
