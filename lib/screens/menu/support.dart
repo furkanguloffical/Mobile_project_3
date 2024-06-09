@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-class supportScreen extends StatefulWidget {
-  const supportScreen({super.key});
+class SupportScreen extends StatefulWidget {
+  const SupportScreen({super.key});
 
   @override
-  State<supportScreen> createState() => _supportScreenState();
+  State<SupportScreen> createState() => _SupportScreenState();
 }
 
-class _supportScreenState extends State<supportScreen> {
+class _SupportScreenState extends State<SupportScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,18 +27,18 @@ class _supportScreenState extends State<supportScreen> {
           ),
           child: Column(
             children: [
-              Container(
+              SafeArea(
                 child: InkWell(
                   onTap: () => Navigator.pushNamed(context, '/home'),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               "Menu",
                               style: TextStyle(
                                 fontSize: 35,
@@ -56,27 +56,30 @@ class _supportScreenState extends State<supportScreen> {
                   ),
                 ),
               ),
-              InkwellMenu(context, "Home", '/home', Icon(Icons.home)),
-              InkwellMenu(context, "Track Shipment ", '/trackShipment',
-                  Icon(Icons.search)),
-              InkwellMenu(context, "Create Shipment ", '/createShipment',
-                  Icon(Icons.add_box)),
-              InkwellMenu(
-                  context, "My Shipments ", '/myShipment', Icon(Icons.inbox)),
-              InkwellMenu(context, "Rates and Services  ", '/ratesAndServices',
-                  Icon(Icons.monetization_on)),
-              InkwellMenu(
-                  context, "Support", '/support', Icon(Icons.support_agent)),
-              InkwellMenu(context, "Find a Location ", '/findALocation',
-                  Icon(Icons.location_on)),
-              InkwellMenu(context, "Profile", '/profile', Icon(Icons.person)),
-              InkwellMenu(context, "Notifications", '/notifications',
-                  Icon(Icons.notifications)),
-              InkwellMenu(
-                  context, "Settings", '/settings', Icon(Icons.settings)),
-              InkwellMenu(context, "Contact ", '/contact', Icon(Icons.call)),
-              InkwellMenu(context, "About Us", '/about', Icon(Icons.person)),
-              InkwellMenu(context, "Logout", '/', Icon(Icons.logout)),
+              inkwellMenu(context, "Home", '/home', const Icon(Icons.home)),
+              inkwellMenu(context, "Track Shipment ", '/trackShipment',
+                  const Icon(Icons.search)),
+              inkwellMenu(context, "Create Shipment ", '/createShipment',
+                  const Icon(Icons.add_box)),
+              inkwellMenu(context, "My Shipments ", '/myShipment',
+                  const Icon(Icons.inbox)),
+              inkwellMenu(context, "Rates and Services  ", '/ratesAndServices',
+                  const Icon(Icons.monetization_on)),
+              inkwellMenu(context, "Support", '/support',
+                  const Icon(Icons.support_agent)),
+              inkwellMenu(context, "Find a Location ", '/findALocation',
+                  const Icon(Icons.location_on)),
+              inkwellMenu(
+                  context, "Profile", '/profile', const Icon(Icons.person)),
+              inkwellMenu(context, "Notifications", '/notifications',
+                  const Icon(Icons.notifications)),
+              inkwellMenu(
+                  context, "Settings", '/settings', const Icon(Icons.settings)),
+              inkwellMenu(
+                  context, "Contact ", '/contact', const Icon(Icons.call)),
+              inkwellMenu(
+                  context, "About Us", '/about', const Icon(Icons.person)),
+              inkwellMenu(context, "Logout", '/', const Icon(Icons.logout)),
             ],
           ),
         ),
@@ -92,36 +95,7 @@ class _supportScreenState extends State<supportScreen> {
   }
 }
 
-@override
-Widget build(BuildContext context) {
-  return Container(
-    color: Colors.grey[200],
-    padding: EdgeInsets.all(20.0),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Track Your Shipment',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(height: 10),
-        TextField(
-          decoration: InputDecoration(
-            hintText: 'Enter your tracking number',
-            border: OutlineInputBorder(),
-          ),
-        ),
-        SizedBox(height: 10),
-        ElevatedButton(
-          onPressed: () => GoRouter.of(context).go("/trackShipment"),
-          child: Text('Track'),
-        ),
-      ],
-    ),
-  );
-}
-
-InkWell InkwellMenu(
+InkWell inkwellMenu(
     BuildContext context, String name, String route, Icon icon) {
   return InkWell(
     onTap: () {
@@ -134,7 +108,7 @@ InkWell InkwellMenu(
         mainAxisSize: MainAxisSize.max,
         children: [
           icon,
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Text(name),
         ],
       ),
@@ -146,7 +120,7 @@ class Product extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(18.0),
       child: Column(
         children: [
           const Text(
@@ -216,14 +190,14 @@ class SupportCard extends StatelessWidget {
       children: [
         Text(
           question,
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
           answer,
-          style: TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 16),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
       ],
     );
   }

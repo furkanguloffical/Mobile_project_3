@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -15,8 +13,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          image: const DecorationImage(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
             image: AssetImage(
                 "/Users/furkangul/Lessons/Flutter/mobile_project_3/assets/images/register.jpg"),
             fit: BoxFit.cover,
@@ -26,32 +24,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Join Us',
                 style: TextStyle(
                     fontSize: 50, color: Color.fromARGB(255, 255, 255, 255)),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               input("Enter your Name"),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               input("Enter your Username"),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               input("Enter your Email"),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               input("Enter your Password"),
               input("Enter your Password again"),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                   onPressed: () => GoRouter.of(context).go("/login"),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 184, 184, 184),
+                    backgroundColor: const Color.fromARGB(255, 184, 184, 184),
                     shadowColor: Colors.white,
-                    side: BorderSide(
+                    side: const BorderSide(
                         color: Color.fromARGB(255, 211, 211, 211), width: 1),
                   ),
-                  child: Text('Create Account',
+                  child: const Text('Create Account',
                       style: TextStyle(color: Colors.black))),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
             ],
           ),
         ),
@@ -61,8 +59,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   Widget input(String shadowName) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      margin: EdgeInsets.all(8),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.9),
         borderRadius: BorderRadius.circular(25),

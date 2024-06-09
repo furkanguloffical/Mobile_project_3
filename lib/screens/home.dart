@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-import '../bloc/client/client_cubit.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -32,18 +30,18 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           child: Column(
             children: [
-              Container(
+              SafeArea(
                 child: InkWell(
                   onTap: () => Navigator.pushNamed(context, '/home'),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               "Menu",
                               style: TextStyle(
                                 fontSize: 35,
@@ -61,58 +59,61 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              InkwellMenu(context, "Home", '/home', Icon(Icons.home)),
-              InkwellMenu(context, "Track Shipment ", '/trackShipment',
-                  Icon(Icons.search)),
-              InkwellMenu(context, "Create Shipment ", '/createShipment',
-                  Icon(Icons.add_box)),
-              InkwellMenu(
-                  context, "My Shipments ", '/myShipment', Icon(Icons.inbox)),
-              InkwellMenu(context, "Rates and Services  ", '/ratesAndServices',
-                  Icon(Icons.monetization_on)),
-              InkwellMenu(
-                  context, "Support", '/support', Icon(Icons.support_agent)),
-              InkwellMenu(context, "Find a Location ", '/findALocation',
-                  Icon(Icons.location_on)),
-              InkwellMenu(context, "Profile", '/profile', Icon(Icons.person)),
-              InkwellMenu(context, "Notifications", '/notifications',
-                  Icon(Icons.notifications)),
-              InkwellMenu(
-                  context, "Settings", '/settings', Icon(Icons.settings)),
-              InkwellMenu(context, "Contact ", '/contact', Icon(Icons.call)),
-              InkwellMenu(context, "About Us", '/about', Icon(Icons.person)),
-              InkwellMenu(context, "Logout", '/login', Icon(Icons.logout)),
+              inkwellMenu(context, "Home", '/home', const Icon(Icons.home)),
+              inkwellMenu(context, "Track Shipment ", '/trackShipment',
+                  const Icon(Icons.search)),
+              inkwellMenu(context, "Create Shipment ", '/createShipment',
+                  const Icon(Icons.add_box)),
+              inkwellMenu(context, "My Shipments ", '/myShipment',
+                  const Icon(Icons.inbox)),
+              inkwellMenu(context, "Rates and Services  ", '/ratesAndServices',
+                  const Icon(Icons.monetization_on)),
+              inkwellMenu(context, "Support", '/support',
+                  const Icon(Icons.support_agent)),
+              inkwellMenu(context, "Find a Location ", '/findALocation',
+                  const Icon(Icons.location_on)),
+              inkwellMenu(
+                  context, "Profile", '/profile', const Icon(Icons.person)),
+              inkwellMenu(context, "Notifications", '/notifications',
+                  const Icon(Icons.notifications)),
+              inkwellMenu(
+                  context, "Settings", '/settings', const Icon(Icons.settings)),
+              inkwellMenu(
+                  context, "Contact ", '/contact', const Icon(Icons.call)),
+              inkwellMenu(
+                  context, "About Us", '/about', const Icon(Icons.person)),
+              inkwellMenu(context, "Logout", '/', const Icon(Icons.logout)),
             ],
           ),
         ),
       ),
-      body: Container(
+      body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Gap(50),
+              const Gap(50),
               Header(),
-              Gap(25),
-              Divider(
+              const Gap(25),
+              const Divider(
                 color: Colors.black,
                 thickness: 2, // Çizginin kalınlığı
                 indent: 20, // Sol taraftan boşluk
                 endIndent: 20, // Sağ taraftan boşluk
               ),
-              Gap(25),
+              const Gap(25),
               FeaturesSection(),
-              Gap(25),
-              Divider(
+              const Gap(25),
+              const Divider(
                 color: Colors.black,
                 thickness: 2, // Çizginin kalınlığı
                 indent: 20, // Sol taraftan boşluk
                 endIndent: 20, // Sağ taraftan boşluk
               ),
-              Gap(25),
-              Padding(
-                padding: const EdgeInsets.all(18.0),
-                child: Container(
-                  child: const Column(
+              const Gap(25),
+              const Padding(
+                padding: EdgeInsets.all(18.0),
+                child: SafeArea(
+                  child: Column(
                     children: [
                       Text(
                         'Our Advantages',
@@ -150,14 +151,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              Gap(25),
-              Divider(
+              const Gap(25),
+              const Divider(
                 color: Colors.black,
                 thickness: 2, // Çizginin kalınlığı
                 indent: 20, // Sol taraftan boşluk
                 endIndent: 20, // Sağ taraftan boşluk
               ),
-              Gap(25),
+              const Gap(25),
               Testimonials(),
               Footer(),
             ],
@@ -171,8 +172,8 @@ class _HomeScreenState extends State<HomeScreen> {
 class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
-      color: Color.fromARGB(255, 255, 255, 255),
-      child: Column(
+      color: const Color.fromARGB(255, 255, 255, 255),
+      child: const Column(
         children: [
           SizedBox(height: 10),
           Text(
@@ -205,11 +206,11 @@ class FeaturesSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'Our Services',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          Gap(20),
+          const Gap(20),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
@@ -220,52 +221,52 @@ class FeaturesSection extends StatelessWidget {
                   icon: Icons.local_shipping,
                   title: 'Fast Delivery',
                 ),
-                Gap(20),
+                const Gap(20),
                 FeatureItem(
                   icon: Icons.security,
                   title: 'Secure',
                 ),
-                Gap(20),
+                const Gap(20),
                 FeatureItem(
                   icon: Icons.eco,
                   title: 'Eco-Friendly',
                 ),
-                Gap(20),
+                const Gap(20),
                 FeatureItem(
                   icon: Icons.public,
                   title: 'International ',
                 ),
-                Gap(20),
+                const Gap(20),
                 FeatureItem(
                   icon: Icons.shopping_cart,
                   title: 'E-commerce ',
                 ),
-                Gap(20),
+                const Gap(20),
                 FeatureItem(
                   icon: Icons.warehouse,
                   title: 'Warehousing',
                 ),
-                Gap(20),
+                const Gap(20),
                 FeatureItem(
                   icon: Icons.account_balance,
                   title: 'Customs Brokerage',
                 ),
-                Gap(20),
+                const Gap(20),
                 FeatureItem(
                   icon: Icons.delivery_dining,
                   title: 'Last-Mile Delivery',
                 ),
-                Gap(20),
+                const Gap(20),
                 FeatureItem(
                   icon: Icons.ac_unit,
                   title: 'Cold Chain ',
                 ),
-                Gap(20),
+                const Gap(20),
                 FeatureItem(
                   icon: Icons.undo,
                   title: 'Reverse Logistics',
                 ),
-                Gap(20),
+                const Gap(20),
                 FeatureItem(
                   icon: Icons.flash_on,
                   title: 'Same-Day Delivery',
@@ -290,10 +291,10 @@ class FeatureItem extends StatelessWidget {
     return Column(
       children: [
         Icon(icon, size: 40),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Text(title,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-        SizedBox(height: 5),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+        const SizedBox(height: 5),
       ],
     );
   }
@@ -307,11 +308,11 @@ class Testimonials extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'What Our Customers Say',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           TestimonialItem(
             text:
                 'Global Reach Logistics provided excellent service and timely delivery.',
@@ -345,7 +346,7 @@ class TestimonialItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.only(bottom: 10),
+      margin: const EdgeInsets.only(bottom: 10),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
@@ -353,12 +354,12 @@ class TestimonialItem extends StatelessWidget {
           children: [
             Text(
               text,
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Text(
               '- $author',
-              style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic),
+              style: const TextStyle(fontSize: 14, fontStyle: FontStyle.italic),
             ),
           ],
         ),
@@ -371,30 +372,30 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(20.0),
       color: Colors.blueAccent,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'Contact Us',
             style: TextStyle(
                 fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 10),
-          Text(
+          const SizedBox(height: 10),
+          const Text(
             'Email: info@globalreachlogistics.com',
             style: TextStyle(fontSize: 16, color: Colors.white),
           ),
-          Text(
+          const Text(
             'Phone: +90 (212) 123-4567',
             style: TextStyle(fontSize: 16, color: Colors.white),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             children: [
               IconButton(
-                icon: Icon(Icons.facebook, color: Colors.white),
+                icon: const Icon(Icons.facebook, color: Colors.white),
                 onPressed: () => GoRouter.of(context).go("/about"),
               ),
               IconButton(
@@ -413,7 +414,7 @@ class Footer extends StatelessWidget {
   }
 }
 
-InkWell InkwellMenu(
+InkWell inkwellMenu(
     BuildContext context, String name, String route, Icon icon) {
   return InkWell(
     onTap: () {
@@ -426,7 +427,7 @@ InkWell InkwellMenu(
         mainAxisSize: MainAxisSize.max,
         children: [
           icon,
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Text(name),
         ],
       ),

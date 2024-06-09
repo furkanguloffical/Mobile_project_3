@@ -37,11 +37,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: [
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             "Menu",
                             style: TextStyle(
                               fontSize: 35,
@@ -58,27 +58,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ),
               ),
-              InkwellMenu(context, "Home", '/home', Icon(Icons.home)),
-              InkwellMenu(context, "Track Shipment ", '/trackShipment',
-                  Icon(Icons.search)),
-              InkwellMenu(context, "Create Shipment ", '/createShipment',
-                  Icon(Icons.add_box)),
-              InkwellMenu(
-                  context, "My Shipments ", '/myShipment', Icon(Icons.inbox)),
-              InkwellMenu(context, "Rates and Services  ", '/ratesAndServices',
-                  Icon(Icons.monetization_on)),
-              InkwellMenu(
-                  context, "Support", '/support', Icon(Icons.support_agent)),
-              InkwellMenu(context, "Find a Location ", '/findALocation',
-                  Icon(Icons.location_on)),
-              InkwellMenu(context, "Profile", '/profile', Icon(Icons.person)),
-              InkwellMenu(context, "Notifications", '/notifications',
-                  Icon(Icons.notifications)),
-              InkwellMenu(
-                  context, "Settings", '/settings', Icon(Icons.settings)),
-              InkwellMenu(context, "Contact ", '/contact', Icon(Icons.call)),
-              InkwellMenu(context, "About Us", '/about', Icon(Icons.person)),
-              InkwellMenu(context, "Logout", '/', Icon(Icons.logout)),
+              inkwellMenu(context, "Home", '/home', const Icon(Icons.home)),
+              inkwellMenu(context, "Track Shipment ", '/trackShipment',
+                  const Icon(Icons.search)),
+              inkwellMenu(context, "Create Shipment ", '/createShipment',
+                  const Icon(Icons.add_box)),
+              inkwellMenu(context, "My Shipments ", '/myShipment',
+                  const Icon(Icons.inbox)),
+              inkwellMenu(context, "Rates and Services  ", '/ratesAndServices',
+                  const Icon(Icons.monetization_on)),
+              inkwellMenu(context, "Support", '/support',
+                  const Icon(Icons.support_agent)),
+              inkwellMenu(context, "Find a Location ", '/findALocation',
+                  const Icon(Icons.location_on)),
+              inkwellMenu(
+                  context, "Profile", '/profile', const Icon(Icons.person)),
+              inkwellMenu(context, "Notifications", '/notifications',
+                  const Icon(Icons.notifications)),
+              inkwellMenu(
+                  context, "Settings", '/settings', const Icon(Icons.settings)),
+              inkwellMenu(
+                  context, "Contact ", '/contact', const Icon(Icons.call)),
+              inkwellMenu(
+                  context, "About Us", '/about', const Icon(Icons.person)),
+              inkwellMenu(context, "Logout", '/', const Icon(Icons.logout)),
             ],
           ),
         ),
@@ -94,36 +97,36 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   children: [
                     Column(
                       children: [
-                        Gap(50),
+                        const Gap(50),
                         Text(
                           'Current Mode: ${isDarkMode ? "Dark" : "Light"}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Roboto',
                               fontSize: 17),
                         ),
-                        Gap(10),
+                        const Gap(10),
                         Text(
                           'Selected Language: $selectedLanguage',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Roboto',
                               fontSize: 17),
                         ),
-                        Gap(10),
+                        const Gap(10),
                         Text(
                           'Notifications: ${notificationsEnabled ? "Enabled" : "Disabled"}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Roboto',
                               fontSize: 17),
                         ),
                       ],
                     ),
-                    Gap(40),
+                    const Gap(40),
                     DropdownButton<String>(
                       value: selectedLanguage,
-                      items: [
+                      items: const [
                         DropdownMenuItem(
                           value: 'en',
                           child: Text('English'),
@@ -147,9 +150,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
               ),
             ),
-            Gap(60),
+            const Gap(60),
             SwitchListTile(
-              title: Text('Enable Notifications'),
+              title: const Text('Enable Notifications'),
               value: notificationsEnabled,
               onChanged: (bool value) {
                 setState(() {
@@ -157,9 +160,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 });
               },
             ),
-            Gap(20),
+            const Gap(20),
             SwitchListTile(
-              title: Text('Dark Mode'),
+              title: const Text('Dark Mode'),
               value: isDarkMode,
               onChanged: (bool value) {
                 setState(() {
@@ -167,23 +170,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 });
               },
             ),
-            Gap(20),
+            const Gap(20),
             ListTile(
-              title: Text('Privacy Policy'),
-              trailing: Icon(Icons.arrow_forward),
+              title: const Text('Privacy Policy'),
+              trailing: const Icon(Icons.arrow_forward),
               onTap: () {
-                GoRouter.of(context).go("/PrivacyPolicy");
+                GoRouter.of(context).go("/privacyPolicy");
               },
             ),
-            Gap(20),
+            const Gap(20),
             ListTile(
-              title: Text('Change Password'),
-              trailing: Icon(Icons.arrow_forward),
+              title: const Text('Change Password'),
+              trailing: const Icon(Icons.arrow_forward),
               onTap: () {
-                GoRouter.of(context).go("/ChangePassword");
+                GoRouter.of(context).go("/changePassword");
               },
             ),
-            Gap(20),
+            const Gap(20),
           ],
         ),
       ),
@@ -191,11 +194,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 }
 
-InkWell InkwellMenu(
+InkWell inkwellMenu(
     BuildContext context, String name, String route, Icon icon) {
   return InkWell(
     onTap: () {
-      Navigator.pop(context); // Close the drawer
+      Navigator.pop(context);
       GoRouter.of(context).go(route);
     },
     child: Padding(
@@ -204,7 +207,7 @@ InkWell InkwellMenu(
         mainAxisSize: MainAxisSize.max,
         children: [
           icon,
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Text(name),
         ],
       ),
@@ -215,9 +218,9 @@ InkWell InkwellMenu(
 class Product extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: const Column(
+    return const Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Column(
         children: [],
       ),
     );

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -27,18 +26,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           child: Column(
             children: [
-              Container(
+              SafeArea(
                 child: InkWell(
                   onTap: () => Navigator.pushNamed(context, '/home'),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               "Menu",
                               style: TextStyle(
                                 fontSize: 35,
@@ -56,44 +55,47 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ),
-              InkwellMenu(context, "Home", '/home', Icon(Icons.home)),
-              InkwellMenu(context, "Track Shipment ", '/trackShipment',
-                  Icon(Icons.search)),
-              InkwellMenu(context, "Create Shipment ", '/createShipment',
-                  Icon(Icons.add_box)),
-              InkwellMenu(
-                  context, "My Shipments ", '/myShipment', Icon(Icons.inbox)),
-              InkwellMenu(context, "Rates and Services  ", '/ratesAndServices',
-                  Icon(Icons.monetization_on)),
-              InkwellMenu(
-                  context, "Support", '/support', Icon(Icons.support_agent)),
-              InkwellMenu(context, "Find a Location ", '/findALocation',
-                  Icon(Icons.location_on)),
-              InkwellMenu(context, "Profile", '/profile', Icon(Icons.person)),
-              InkwellMenu(context, "Notifications", '/notifications',
-                  Icon(Icons.notifications)),
-              InkwellMenu(
-                  context, "Settings", '/settings', Icon(Icons.settings)),
-              InkwellMenu(context, "Contact ", '/contact', Icon(Icons.call)),
-              InkwellMenu(context, "About Us", '/about', Icon(Icons.person)),
-              InkwellMenu(context, "Logout", '/', Icon(Icons.logout)),
+              inkwellMenu(context, "Home", '/home', const Icon(Icons.home)),
+              inkwellMenu(context, "Track Shipment ", '/trackShipment',
+                  const Icon(Icons.search)),
+              inkwellMenu(context, "Create Shipment ", '/createShipment',
+                  const Icon(Icons.add_box)),
+              inkwellMenu(context, "My Shipments ", '/myShipment',
+                  const Icon(Icons.inbox)),
+              inkwellMenu(context, "Rates and Services  ", '/ratesAndServices',
+                  const Icon(Icons.monetization_on)),
+              inkwellMenu(context, "Support", '/support',
+                  const Icon(Icons.support_agent)),
+              inkwellMenu(context, "Find a Location ", '/findALocation',
+                  const Icon(Icons.location_on)),
+              inkwellMenu(
+                  context, "Profile", '/profile', const Icon(Icons.person)),
+              inkwellMenu(context, "Notifications", '/notifications',
+                  const Icon(Icons.notifications)),
+              inkwellMenu(
+                  context, "Settings", '/settings', const Icon(Icons.settings)),
+              inkwellMenu(
+                  context, "Contact ", '/contact', const Icon(Icons.call)),
+              inkwellMenu(
+                  context, "About Us", '/about', const Icon(Icons.person)),
+              inkwellMenu(context, "Logout", '/', const Icon(Icons.logout)),
             ],
           ),
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Container(
+        child: SafeArea(
           child: Center(
             child: Column(children: [
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     width: 200,
                     height: 200,
-                    padding: EdgeInsets.all(4),
+                    padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
                         border: Border.all(
                           color: const Color.fromARGB(255, 82, 177,
@@ -102,8 +104,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               5.0, // Sınır kalınlığını buradan ayarlayabilirsiniz
                         ),
                         shape: BoxShape.circle,
-                        color: Color.fromARGB(255, 255, 255, 255)),
-                    child: CircleAvatar(
+                        color: const Color.fromARGB(255, 255, 255, 255)),
+                    child: const CircleAvatar(
                       radius: 100,
                       backgroundImage: AssetImage(
                           '/Users/furkangul/Lessons/Flutter/mobile_project_3/assets/images/person.jpg'),
@@ -112,29 +114,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
               const Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       'Keyvan Arasteh',
                       style: TextStyle(
-                          fontSize: 30,
-                          color: const Color.fromARGB(255, 0, 0, 0)),
+                          fontSize: 30, color: Color.fromARGB(255, 0, 0, 0)),
                     ),
                   ],
                 ),
               ),
-              ProfileText("Username: keyvanarasteh"),
-              SizedBox(height: 10),
-              ProfileText("Email: keyvan.arasteh@live.com"),
-              SizedBox(height: 10),
-              ProfileText("Phone: 0123456789"),
-              SizedBox(height: 10),
-              ProfileText("Address: Istanbul / Turkey"),
-              SizedBox(height: 10),
+              profileText("Username: keyvanarasteh"),
+              const SizedBox(height: 10),
+              profileText("Email: keyvan.arasteh@live.com"),
+              const SizedBox(height: 10),
+              profileText("Phone: 0123456789"),
+              const SizedBox(height: 10),
+              profileText("Address: Istanbul / Turkey"),
+              const SizedBox(height: 10),
               Container(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(25),
                 ),
@@ -146,9 +147,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Container ProfileLibraryPhoto(photo) {
+  Container profileLibraryPhoto(photo) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 3),
+      padding: const EdgeInsets.symmetric(horizontal: 3),
       child: Image.asset(
         photo,
         width: 150,
@@ -156,14 +157,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Widget ProfileText(text) {
+  Widget profileText(text) {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
-          color: Color.fromARGB(255, 0, 0, 0),
+          color: const Color.fromARGB(255, 0, 0, 0),
           width: 1,
         ),
-        color: Color.fromARGB(255, 255, 255, 255).withOpacity(0.6),
+        color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.6),
         borderRadius: BorderRadius.circular(25),
       ),
       child: Padding(
@@ -173,8 +174,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             Text(
               text,
-              style: TextStyle(
-                  fontSize: 15, color: const Color.fromARGB(255, 0, 0, 0)),
+              style: const TextStyle(
+                  fontSize: 15, color: Color.fromARGB(255, 0, 0, 0)),
             ),
           ],
         ),
@@ -183,7 +184,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 }
 
-InkWell InkwellMenu(
+InkWell inkwellMenu(
     BuildContext context, String name, String route, Icon icon) {
   return InkWell(
     onTap: () {
@@ -196,7 +197,7 @@ InkWell InkwellMenu(
         mainAxisSize: MainAxisSize.max,
         children: [
           icon,
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Text(name),
         ],
       ),

@@ -24,7 +24,6 @@ class _LoaderScreenState extends State<LoaderScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     loadApp();
   }
