@@ -60,7 +60,7 @@ class _ForgatPasswordScreenState extends State<ForgatPasswordScreen> {
                     side: const BorderSide(
                         color: Color.fromARGB(255, 211, 211, 211), width: 1),
                   ),
-                  child: const Text('Sende Verification Code',
+                  child: const Text('Send Verification Code',
                       style: TextStyle(color: Colors.black))),
             ],
           ),

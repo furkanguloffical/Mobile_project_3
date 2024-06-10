@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -17,7 +15,7 @@ class LoaderScreen extends StatefulWidget {
 class _LoaderScreenState extends State<LoaderScreen> {
   loadApp() async {
     final storage = Storage();
-    //storage.clearStorage();
+    storage.clearStorage();
     final firstLaunch = await storage.isFirstLaunch();
 
     if (firstLaunch) {
@@ -44,7 +42,7 @@ class _LoaderScreenState extends State<LoaderScreen> {
         const darkMode = ThemeMode.system == ThemeMode.dark;
         await storage.setConfig(darkMode: darkMode);
       }
-      GoRouter.of(context).replace("/login");
+      GoRouter.of(context).replace("/");
     }
   }
 
@@ -69,17 +67,46 @@ class _LoaderScreenState extends State<LoaderScreen> {
     return finalLang;
   }
 
+  loadData() async {
+    Future.delayed(const Duration(milliseconds: 2500), () {
+      context.go("/login");
+    });
+  }
+
   @override
   void initState() {
     super.initState();
     loadApp();
+    loadData();
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          child: Stack(
+            children: [
+              Center(
+                child: Image.network(
+                  "https://i.pinimg.com/originals/c3/c4/09/c3c40926dca06a97dd0562753d63b7f4.png",
+                  height: 150,
+                ),
+              ),
+              const Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation(Colors.blue),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
