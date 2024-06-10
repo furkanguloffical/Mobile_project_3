@@ -1,3 +1,2 @@
-# mobile_project_3
-
-A new Flutter project.
+Furkan Gül 221216036
+Supervisor: [Keyvan Arasteh](https://github.com/keyvanarasteh)
