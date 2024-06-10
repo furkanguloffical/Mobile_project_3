@@ -16,7 +16,27 @@
     "Logout": "Logout",
     "DarkMode": "Dark Mode",
     "PrivacyPolicy": " Privacy Policy",
-    "ChangePassword": "Change Password "
+    "ChangePassword": "Change Password ",
+    "Language": "Language",
+
+    "Email": "Email",
+    "Password": "Password",
+    "EmailEnter": "Enter Your mail",
+    "PasswordEnter": "Enter Your password",
+    "Login": "Login",
+    "Register": "Register",
+    "JoinUs": "Join Us",
+    "EnterName": "Enter Your Name",
+    "EnterUsername": "Enter Your Username",
+    "EnterEmail": "Enter Your Email",
+    "EnterPassword": "Enter Your Password",
+    "EnterPasswordAgain": "Enter Your Password again",
+    "CreateAccount": "Create Account",
+
+    "our_services": "Our Services",
+    "our_Advantages": "Our Advantages"
+
+    
 
 
 }

@@ -9,14 +9,14 @@ import 'package:mobile_project_3/screens/menu/settings.dart';
 import 'package:mobile_project_3/screens/menu/support.dart';
 
 import '../screens/client/change_password.dart';
+import '../screens/client/forgat_password.dart';
 import '../screens/client/login.dart';
 import '../screens/client/profile.dart';
 import '../screens/client/register.dart';
 import '../screens/core/error.dart';
 import '../screens/home.dart';
 import '../screens/menu/create_shipment.dart';
-import '../screens/product/product.dart';
-import '../screens/product/search.dart';
+
 import '../screens/static/about.dart';
 import '../screens/static/boarding.dart';
 import '../screens/static/contact.dart';
@@ -49,14 +49,6 @@ final routes = GoRouter(
     GoRoute(
       path: '/register',
       builder: (context, state) => const RegisterScreen(),
-    ),
-    GoRoute(
-      path: '/product',
-      builder: (context, state) => const ProductScreen(),
-    ),
-    GoRoute(
-      path: '/search',
-      builder: (context, state) => const SearchScreen(),
     ),
     GoRoute(
       path: '/about',
@@ -109,6 +101,10 @@ final routes = GoRouter(
     GoRoute(
       path: '/changePassword',
       builder: (context, state) => const ChangePasswordScreen(),
+    ),
+    GoRoute(
+      path: '/forgatPassword',
+      builder: (context, state) => const ForgatPasswordScreen(),
     ),
   ],
 );

@@ -10,11 +10,13 @@ class AppLocalizations {
   static const List<String> _supportedLanguages = [
     'en',
     'tr',
+    'fa',
   ];
 
   static const Map<String, String> _supportedLanguages2 = {
     'en': "English",
     'tr': "Türkçe",
+    'fa': "فارسی",
   };
 
   AppLocalizations(this.locale);
@@ -61,6 +63,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   static const List<String> _supportedLanguages = [
     'en',
     'tr',
+    'fa',
   ];
 
   const AppLocalizationsDelegate();

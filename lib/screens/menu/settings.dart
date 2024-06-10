@@ -16,13 +16,15 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   bool isDarkMode = false;
   String selectedLanguage = 'en';
-  bool DarkModeEnabled = false;
+  bool darkModeEnabled = false;
   late ClientCubit clientCubit;
 
   @override
   void initState() {
     super.initState();
     clientCubit = context.read<ClientCubit>();
+    selectedLanguage = clientCubit.state.language; // Initial language
+    darkModeEnabled = clientCubit.state.darkMode; // Initial dark mode state
   }
 
   @override
@@ -151,7 +153,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       children: [
                         const Gap(50),
                         Text(
-                          "Language: ${clientCubit.state.language}",
+                          "${AppLocalizations.of(context).getTranslate("Language")}: ${clientCubit.state.language[0].toUpperCase()}${clientCubit.state.language.substring(1)}",
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Roboto',
@@ -159,11 +161,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         ),
                         const Gap(10),
                         Text(
-                          "DarkMode: ${clientCubit.state.darkMode}",
+                          "${AppLocalizations.of(context).getTranslate("DarkMode")}: ${clientCubit.state.darkMode.toString()[0].toUpperCase()}${clientCubit.state.darkMode.toString().substring(1)}",
                           style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Roboto',
-                              fontSize: 17),
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Roboto',
+                            fontSize: 17,
+                          ),
                         ),
                         const Gap(10),
                       ],
@@ -177,17 +180,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           child: Text('English'),
                         ),
                         DropdownMenuItem(
-                          value: 'es',
-                          child: Text('Spanish'),
+                          value: 'fa',
+                          child: Text('Persian'),
                         ),
                         DropdownMenuItem(
-                          value: 'fr',
-                          child: Text('French'),
+                          value: 'tr',
+                          child: Text('Turkish'),
                         ),
                       ],
                       onChanged: (String? newValue) {
                         setState(() {
                           selectedLanguage = newValue!;
+                          clientCubit.changeLanguage(language: newValue);
                         });
                       },
                     ),
@@ -206,24 +210,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
             SwitchListTile(
               title:
                   Text(AppLocalizations.of(context).getTranslate("DarkMode")),
-              value: DarkModeEnabled,
+              value: darkModeEnabled,
               onChanged: (bool value) {
                 setState(() {
-                  DarkModeEnabled = value;
+                  darkModeEnabled = value;
                   clientCubit.changeDarkMode(darkMode: value);
                 });
               },
             ),
-
             const Gap(10),
             const Divider(
               color: Colors.black,
-              thickness: 2, // Çizginin kalınlığı
-              indent: 20, // Sol taraftan boşluk
-              endIndent: 20, // Sağ taraftan boşluk
+              thickness: 2,
+              indent: 20,
+              endIndent: 20,
             ),
             const Gap(10),
-
             ListTile(
               title: Text(
                   AppLocalizations.of(context).getTranslate("PrivacyPolicy")),
@@ -255,19 +257,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
               indent: 20,
               endIndent: 20,
             ),
-            const Gap(10),
-            //Diğer bir Yöntem
-            // ElevatedButton(
-            //     onPressed: () {
-            //       clientCubit.changeDarkMode(darkMode: true);
-            //     },
-            //     child: const Text("Dark Mode")),
-            // Gap(20),
-            // ElevatedButton(
-            //     onPressed: () {
-            //       clientCubit.changeDarkMode(darkMode: false);
-            //     },
-            //     child: const Text("Light Mode")),
           ],
         ),
       ),

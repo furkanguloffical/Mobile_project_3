@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mobile_project_3/core/localizations.dart';
 
 class CreateShimentScreen extends StatefulWidget {
   const CreateShimentScreen({super.key});
@@ -55,31 +56,71 @@ class _CreateShimentScreenState extends State<CreateShimentScreen> {
                   ),
                 ),
               ),
-              inkwellMenu(context, "Home", '/home', const Icon(Icons.home)),
-              inkwellMenu(context, "Track Shipment ", '/trackShipment',
+              inkwellMenu(
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu1"),
+                  '/home',
+                  const Icon(Icons.home)),
+              inkwellMenu(
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu2"),
+                  '/trackShipment',
                   const Icon(Icons.search)),
-              inkwellMenu(context, "Create Shipment ", '/createShipment',
+              inkwellMenu(
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu3"),
+                  '/createShipment',
                   const Icon(Icons.add_box)),
-              inkwellMenu(context, "My Shipments ", '/myShipment',
+              inkwellMenu(
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu4"),
+                  '/myShipment',
                   const Icon(Icons.inbox)),
-              inkwellMenu(context, "Rates and Services  ", '/ratesAndServices',
+              inkwellMenu(
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu5"),
+                  '/ratesAndServices',
                   const Icon(Icons.monetization_on)),
-              inkwellMenu(context, "Support", '/support',
+              inkwellMenu(
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu6"),
+                  '/support',
                   const Icon(Icons.support_agent)),
-              inkwellMenu(context, "Find a Location ", '/findALocation',
+              inkwellMenu(
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu7"),
+                  '/findALocation',
                   const Icon(Icons.location_on)),
               inkwellMenu(
-                  context, "Profile", '/profile', const Icon(Icons.person)),
-              inkwellMenu(context, "Notifications", '/notifications',
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu8"),
+                  '/profile',
+                  const Icon(Icons.person)),
+              inkwellMenu(
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu9"),
+                  '/notifications',
                   const Icon(Icons.notifications)),
               inkwellMenu(
-                  context, "Settings", '/settings', const Icon(Icons.settings)),
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu10"),
+                  '/settings',
+                  const Icon(Icons.settings)),
               inkwellMenu(
-                  context, "Contact ", '/contact', const Icon(Icons.call)),
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu11"),
+                  '/contact',
+                  const Icon(Icons.call)),
               inkwellMenu(
-                  context, "About Us", '/about', const Icon(Icons.person)),
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu12"),
+                  '/about',
+                  const Icon(Icons.person)),
               inkwellMenu(
-                  context, "Logout", '/login', const Icon(Icons.logout)),
+                  context,
+                  AppLocalizations.of(context).getTranslate("Logout"),
+                  '/login',
+                  const Icon(Icons.logout)),
             ],
           ),
         ),
