@@ -96,18 +96,18 @@ class _HomeScreenState extends State<HomeScreen> {
               const Gap(25),
               const Divider(
                 color: Colors.black,
-                thickness: 2, // Çizginin kalınlığı
-                indent: 20, // Sol taraftan boşluk
-                endIndent: 20, // Sağ taraftan boşluk
+                thickness: 2,
+                indent: 20,
+                endIndent: 20,
               ),
               const Gap(25),
               FeaturesSection(),
               const Gap(25),
               const Divider(
                 color: Colors.black,
-                thickness: 2, // Çizginin kalınlığı
-                indent: 20, // Sol taraftan boşluk
-                endIndent: 20, // Sağ taraftan boşluk
+                thickness: 2,
+                indent: 20,
+                endIndent: 20,
               ),
               const Gap(25),
               const Padding(
@@ -154,9 +154,9 @@ class _HomeScreenState extends State<HomeScreen> {
               const Gap(25),
               const Divider(
                 color: Colors.black,
-                thickness: 2, // Çizginin kalınlığı
-                indent: 20, // Sol taraftan boşluk
-                endIndent: 20, // Sağ taraftan boşluk
+                thickness: 2,
+                indent: 20,
+                endIndent: 20,
               ),
               const Gap(25),
               Testimonials(),
@@ -185,13 +185,6 @@ class Header extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 20),
-          // InkWell(
-          //   onTap: () => GoRouter.of(context).go("/"),
-          //   child: const Text(
-          //     "Beytullah ",
-          //     style: TextStyle(fontSize: 18, color: Colors.white),
-          //   ),
-          //),
         ],
       ),
     );

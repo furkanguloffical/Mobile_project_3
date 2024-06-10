@@ -9,6 +9,7 @@ environment:
 dependencies:
   animate_do: ^3.3.4
   cupertino_icons: ^1.0.8
+  flex_color_scheme: ^7.3.1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.5
@@ -28,8 +29,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/login.jpg
-    - assets/images/
+
     - assets/images/
     - assets/icons/
     - assets/fonts/

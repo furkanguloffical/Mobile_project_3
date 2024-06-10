@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import '../../bloc/client/client_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -14,6 +16,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
   bool isDarkMode = false;
   String selectedLanguage = 'en';
   bool notificationsEnabled = true;
+  late ClientCubit clientCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    clientCubit = context.read<ClientCubit>();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,10 +105,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: Row(
                   children: [
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Gap(50),
                         Text(
-                          'Current Mode: ${isDarkMode ? "Dark" : "Light"}',
+                          "Language: ${clientCubit.state.language}",
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Roboto',
@@ -107,20 +117,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         ),
                         const Gap(10),
                         Text(
-                          'Selected Language: $selectedLanguage',
+                          "DarkMode: ${clientCubit.state.darkMode}",
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Roboto',
                               fontSize: 17),
                         ),
                         const Gap(10),
-                        Text(
-                          'Notifications: ${notificationsEnabled ? "Enabled" : "Disabled"}',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Roboto',
-                              fontSize: 17),
-                        ),
                       ],
                     ),
                     const Gap(40),
@@ -150,27 +153,35 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
               ),
             ),
-            const Gap(60),
+            const Gap(10),
+            const Divider(
+              color: Colors.black,
+              thickness: 2, // Çizginin kalınlığı
+              indent: 20, // Sol taraftan boşluk
+              endIndent: 20, // Sağ taraftan boşluk
+            ),
+            const Gap(10),
             SwitchListTile(
-              title: const Text('Enable Notifications'),
+              title: const Text('Dark Mode'),
               value: notificationsEnabled,
               onChanged: (bool value) {
                 setState(() {
                   notificationsEnabled = value;
+                  clientCubit.changeDarkMode(
+                      darkMode: value); // Update the mode
                 });
               },
             ),
-            const Gap(20),
-            SwitchListTile(
-              title: const Text('Dark Mode'),
-              value: isDarkMode,
-              onChanged: (bool value) {
-                setState(() {
-                  isDarkMode = value;
-                });
-              },
+
+            const Gap(10),
+            const Divider(
+              color: Colors.black,
+              thickness: 2, // Çizginin kalınlığı
+              indent: 20, // Sol taraftan boşluk
+              endIndent: 20, // Sağ taraftan boşluk
             ),
-            const Gap(20),
+            const Gap(10),
+
             ListTile(
               title: const Text('Privacy Policy'),
               trailing: const Icon(Icons.arrow_forward),
@@ -178,7 +189,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 GoRouter.of(context).go("/privacyPolicy");
               },
             ),
-            const Gap(20),
+            const Gap(10),
+            const Divider(
+              color: Colors.black,
+              thickness: 2,
+              indent: 20,
+              endIndent: 20,
+            ),
+            const Gap(10),
             ListTile(
               title: const Text('Change Password'),
               trailing: const Icon(Icons.arrow_forward),
@@ -186,7 +204,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 GoRouter.of(context).go("/changePassword");
               },
             ),
-            const Gap(20),
+            const Gap(10),
+            const Divider(
+              color: Colors.black,
+              thickness: 2,
+              indent: 20,
+              endIndent: 20,
+            ),
+            const Gap(10),
+            // ElevatedButton(
+            //     onPressed: () {
+            //       clientCubit.changeDarkMode(darkMode: true);
+            //     },
+            //     child: const Text("Dark Mode")),
+            // Gap(20),
+            // ElevatedButton(
+            //     onPressed: () {
+            //       clientCubit.changeDarkMode(darkMode: false);
+            //     },
+            //     child: const Text("Light Mode")),
           ],
         ),
       ),
@@ -213,16 +249,4 @@ InkWell inkwellMenu(
       ),
     ),
   );
-}
-
-class Product extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(8.0),
-      child: Column(
-        children: [],
-      ),
-    );
-  }
 }
