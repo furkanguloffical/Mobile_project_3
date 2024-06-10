@@ -15,38 +15,44 @@ class LoaderScreen extends StatefulWidget {
 class _LoaderScreenState extends State<LoaderScreen> {
   loadApp() async {
     final storage = Storage();
-    storage.clearStorage();
+    //storage.clearStorage();
     final firstLaunch = await storage.isFirstLaunch();
 
     if (firstLaunch) {
-      // cihazin gece gunduz moduna erismek
-      const darkMode = ThemeMode.system == ThemeMode.dark;
+      // Cihazın gece gündüz moduna erişmek
+      final darkMode =
+          WidgetsBinding.instance.window.platformBrightness == Brightness.dark;
 
-      // cihazin varsayilan diline erismek
-
+      // Cihazın varsayılan diline erişmek
       await storage.setConfig(
-          language: getDeviceLanguage(), darkMode: darkMode);
+        language: getDeviceLanguage(),
+        darkMode: darkMode,
+      );
 
+      // Kullanıcıyı onboarding ekranına yönlendirme
+      await loadData();
       GoRouter.of(context).replace("/boarding");
     } else {
-      // ana ekrana git
-      // navigate to home screen
-
+      // Ana ekrana git
       final config = await storage.getConfig();
 
       if (config["language"] == null) {
-        storage.setConfig(language: getDeviceLanguage());
+        await storage.setConfig(language: getDeviceLanguage());
       }
 
       if (config["darkMode"] == null) {
-        const darkMode = ThemeMode.system == ThemeMode.dark;
+        final darkMode = WidgetsBinding.instance.window.platformBrightness ==
+            Brightness.dark;
         await storage.setConfig(darkMode: darkMode);
       }
-      GoRouter.of(context).replace("/");
+
+      // Kullanıcıyı login ekranına yönlendirme
+      await loadData();
+      GoRouter.of(context).replace("/login");
     }
   }
 
-  getDeviceLanguage() {
+  String getDeviceLanguage() {
     final String defaultLocale;
     if (!kIsWeb) {
       defaultLocale = Platform.localeName;
@@ -67,17 +73,14 @@ class _LoaderScreenState extends State<LoaderScreen> {
     return finalLang;
   }
 
-  loadData() async {
-    Future.delayed(const Duration(milliseconds: 2500), () {
-      context.go("/login");
-    });
+  Future<void> loadData() async {
+    await Future.delayed(const Duration(milliseconds: 2500));
   }
 
   @override
   void initState() {
     super.initState();
     loadApp();
-    loadData();
   }
 
   @override
