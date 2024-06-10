@@ -85,7 +85,8 @@ class SuccessfulShipmentScreen extends StatelessWidget {
                   context, "Contact ", '/contact', const Icon(Icons.call)),
               inkwellMenu(
                   context, "About Us", '/about', const Icon(Icons.person)),
-              inkwellMenu(context, "Logout", '/', const Icon(Icons.logout)),
+              inkwellMenu(
+                  context, "Logout", '/login', const Icon(Icons.logout)),
             ],
           ),
         ),

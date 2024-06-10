@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mobile_project_3/core/localizations.dart';
 import '../../bloc/client/client_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,7 +16,7 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   bool isDarkMode = false;
   String selectedLanguage = 'en';
-  bool notificationsEnabled = true;
+  bool DarkModeEnabled = false;
   late ClientCubit clientCubit;
 
   @override
@@ -50,9 +51,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
-                            "Menu",
-                            style: TextStyle(
+                          Text(
+                            AppLocalizations.of(context).getTranslate("menu"),
+                            style: const TextStyle(
                               fontSize: 35,
                               fontWeight: FontWeight.bold,
                             ),
@@ -67,30 +68,71 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ),
               ),
-              inkwellMenu(context, "Home", '/home', const Icon(Icons.home)),
-              inkwellMenu(context, "Track Shipment ", '/trackShipment',
+              inkwellMenu(
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu1"),
+                  '/home',
+                  const Icon(Icons.home)),
+              inkwellMenu(
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu2"),
+                  '/trackShipment',
                   const Icon(Icons.search)),
-              inkwellMenu(context, "Create Shipment ", '/createShipment',
+              inkwellMenu(
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu3"),
+                  '/createShipment',
                   const Icon(Icons.add_box)),
-              inkwellMenu(context, "My Shipments ", '/myShipment',
+              inkwellMenu(
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu4"),
+                  '/myShipment',
                   const Icon(Icons.inbox)),
-              inkwellMenu(context, "Rates and Services  ", '/ratesAndServices',
+              inkwellMenu(
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu5"),
+                  '/ratesAndServices',
                   const Icon(Icons.monetization_on)),
-              inkwellMenu(context, "Support", '/support',
+              inkwellMenu(
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu6"),
+                  '/support',
                   const Icon(Icons.support_agent)),
-              inkwellMenu(context, "Find a Location ", '/findALocation',
+              inkwellMenu(
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu7"),
+                  '/findALocation',
                   const Icon(Icons.location_on)),
               inkwellMenu(
-                  context, "Profile", '/profile', const Icon(Icons.person)),
-              inkwellMenu(context, "Notifications", '/notifications',
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu8"),
+                  '/profile',
+                  const Icon(Icons.person)),
+              inkwellMenu(
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu9"),
+                  '/notifications',
                   const Icon(Icons.notifications)),
               inkwellMenu(
-                  context, "Settings", '/settings', const Icon(Icons.settings)),
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu10"),
+                  '/settings',
+                  const Icon(Icons.settings)),
               inkwellMenu(
-                  context, "Contact ", '/contact', const Icon(Icons.call)),
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu11"),
+                  '/contact',
+                  const Icon(Icons.call)),
               inkwellMenu(
-                  context, "About Us", '/about', const Icon(Icons.person)),
-              inkwellMenu(context, "Logout", '/', const Icon(Icons.logout)),
+                  context,
+                  AppLocalizations.of(context).getTranslate("menu12"),
+                  '/about',
+                  const Icon(Icons.person)),
+              inkwellMenu(
+                  context,
+                  AppLocalizations.of(context).getTranslate("Logout"),
+                  '/login',
+                  const Icon(Icons.logout)),
             ],
           ),
         ),
@@ -156,19 +198,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const Gap(10),
             const Divider(
               color: Colors.black,
-              thickness: 2, // Çizginin kalınlığı
-              indent: 20, // Sol taraftan boşluk
-              endIndent: 20, // Sağ taraftan boşluk
+              thickness: 2,
+              indent: 20,
+              endIndent: 20,
             ),
             const Gap(10),
             SwitchListTile(
-              title: const Text('Dark Mode'),
-              value: notificationsEnabled,
+              title:
+                  Text(AppLocalizations.of(context).getTranslate("DarkMode")),
+              value: DarkModeEnabled,
               onChanged: (bool value) {
                 setState(() {
-                  notificationsEnabled = value;
-                  clientCubit.changeDarkMode(
-                      darkMode: value); // Update the mode
+                  DarkModeEnabled = value;
+                  clientCubit.changeDarkMode(darkMode: value);
                 });
               },
             ),
@@ -183,7 +225,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const Gap(10),
 
             ListTile(
-              title: const Text('Privacy Policy'),
+              title: Text(
+                  AppLocalizations.of(context).getTranslate("PrivacyPolicy")),
               trailing: const Icon(Icons.arrow_forward),
               onTap: () {
                 GoRouter.of(context).go("/privacyPolicy");
@@ -198,7 +241,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             const Gap(10),
             ListTile(
-              title: const Text('Change Password'),
+              title: Text(
+                  AppLocalizations.of(context).getTranslate("ChangePassword")),
               trailing: const Icon(Icons.arrow_forward),
               onTap: () {
                 GoRouter.of(context).go("/changePassword");
@@ -212,6 +256,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               endIndent: 20,
             ),
             const Gap(10),
+            //Diğer bir Yöntem
             // ElevatedButton(
             //     onPressed: () {
             //       clientCubit.changeDarkMode(darkMode: true);

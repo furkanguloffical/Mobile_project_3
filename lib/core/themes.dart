@@ -4,7 +4,7 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 
 final lightTheme = FlexThemeData.light(
   colors: const FlexSchemeColor(
-    primary: Color(0xff1695d8),
+    primary: Color.fromARGB(255, 255, 242, 242),
     primaryContainer: Color(0xffd0e4ff),
     secondary: Color(0xffac3306),
     secondaryContainer: Color(0xffffdbcf),
@@ -20,13 +20,13 @@ final lightTheme = FlexThemeData.light(
     blendOnColors: false,
     useTextTheme: true,
     useM2StyleDividerInM3: true,
-    textButtonRadius: 4.0,
+    textButtonRadius: 15.0,
     textButtonSchemeColor: SchemeColor.onBackground,
-    filledButtonRadius: 4.0,
-    elevatedButtonRadius: 4.0,
+    filledButtonRadius: 15.0,
+    elevatedButtonRadius: 15.0,
     elevatedButtonSchemeColor: SchemeColor.onBackground,
     elevatedButtonSecondarySchemeColor: SchemeColor.background,
-    outlinedButtonRadius: 4.0,
+    outlinedButtonRadius: 15.0,
     outlinedButtonSchemeColor: SchemeColor.onBackground,
     outlinedButtonOutlineSchemeColor: SchemeColor.outlineVariant,
     alignedDropdown: true,
